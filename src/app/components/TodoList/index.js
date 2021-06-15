@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 import { color, space, layout } from 'styled-system';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { todoSelector, deleteTodo, toggleTodo } from '../../Pages/Home/slice';
+import { pageIndexSelector } from '../Pagination/slice';
+import Pagination from '../Pagination';
 
 const TodoListWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
   ${color}
   ${space}
   ${layout}
@@ -57,6 +61,8 @@ const TodoButton = styled.button`
 
 const TodoList = () => {
   const todoList = useSelector(todoSelector);
+  const { start, end } = useSelector(pageIndexSelector);
+
   const dispatch = useDispatch();
 
   const handleDeleteTodo = (id) => {
@@ -67,11 +73,13 @@ const TodoList = () => {
     dispatch(toggleTodo(id))
   }
   
+  const filterTodoList = todoList.filter((todoItem, index) => index >= start && index <= end)
+
   return (
     <TodoListWrap width={1} color='#4d4d4d' pt={2}>
       {
-        !!(todoList?.length > 0) && (
-          todoList.map(todoItem => (
+        filterTodoList.length > 0 && (
+          filterTodoList.map(todoItem => (
             <TodoItemWrap width={[1, 1/2]} px={3} py={2} key={todoItem.id} isComplate={todoItem.isComplate}>
               <TodoContent>{todoItem.content}</TodoContent>
               <TodoButtons>
@@ -84,6 +92,7 @@ const TodoList = () => {
           ))
         )
       }
+      <Pagination total={todoList.length} isBottom />
     </TodoListWrap>
   );
 };
