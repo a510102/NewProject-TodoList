@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { layout, space, flexbox, color } from 'styled-system';
+import {
+  layout, space, flexbox, color,
+} from 'styled-system';
 
 const HeaderWrap = styled.div(
   {
@@ -12,14 +14,11 @@ const HeaderWrap = styled.div(
   space,
 );
 
-const Header = ({}) => {
-
-  return (
-    <HeaderWrap width='1' p={['2', '3']} bg='#fff'>
-      <Link>Home</Link>
-      <Link>Other</Link>
-    </HeaderWrap>
-  )
-}
+const Header = ({}) => (
+  <HeaderWrap width="1" p={['2', '3']} bg="#fff">
+    <Link>Home</Link>
+    <Link>Other</Link>
+  </HeaderWrap>
+);
 
 export default Header;
