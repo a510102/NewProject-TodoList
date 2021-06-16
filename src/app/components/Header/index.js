@@ -14,10 +14,25 @@ const HeaderWrap = styled.div(
   space,
 );
 
-const Header = ({}) => (
+const HeaderButton = styled(Link)`
+  color: #fff;
+  border: none;
+  background: #95CAD8;
+  border-radius: 12px;
+  width: fit-content;
+  display: inline-block;
+  padding: 8px;
+  text-decoration: none;
+  margin-left: ${props => props.isFirst ? ('0') : ('8px')};
+  :hover {
+    background: #89DBFB;
+  }
+`;
+
+const Header = () => (
   <HeaderWrap width="1" p={['2', '3']} bg="#fff">
-    <Link>Home</Link>
-    <Link>Other</Link>
+    <HeaderButton isFirst to='/'>Home</HeaderButton>
+    <HeaderButton to='/'>Other</HeaderButton>
   </HeaderWrap>
 );
 

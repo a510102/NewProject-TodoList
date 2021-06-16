@@ -47,7 +47,7 @@ export const ResetStyled = createGlobalStyle`
 `;
 
 export const GlobaStyled = createGlobalStyle`
-	html{
+	*{
 		box-sizing: border-box;
 		font-size: 16px;
 		font-weight: 300;

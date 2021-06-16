@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { todoSelector, deleteTodo, toggleTodo } from '../../Pages/Home/slice';
 import { pageIndexSelector } from '../Pagination/slice';
-import Pagination from '../Pagination';
 
 const TodoListWrap = styled.div`
   display: flex;
@@ -98,7 +97,6 @@ const TodoList = () => {
           ))
         )
       }
-      <Pagination total={todoList.length} isBottom />
     </TodoListWrap>
   );
 };
