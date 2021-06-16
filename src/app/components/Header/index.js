@@ -23,7 +23,7 @@ const HeaderButton = styled(Link)`
   display: inline-block;
   padding: 8px;
   text-decoration: none;
-  margin-left: ${props => props.isFirst ? ('0') : ('8px')};
+  margin-left: ${props => props.$isFirst ? '0' : '8px'};
   :hover {
     background: #89DBFB;
   }
@@ -31,7 +31,7 @@ const HeaderButton = styled(Link)`
 
 const Header = () => (
   <HeaderWrap width="1" p={['2', '3']} bg="#fff">
-    <HeaderButton isFirst to='/'>Home</HeaderButton>
+    <HeaderButton $isFirst to='/'>Home</HeaderButton>
     <HeaderButton to='/'>Other</HeaderButton>
   </HeaderWrap>
 );
