@@ -21,7 +21,7 @@ const TodoItemWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #fff;
-  text-decoration: ${props => props.isComplate ? 'line-through' : 'none'};
+  text-decoration: ${(props) => (props.isComplate ? 'line-through' : 'none')};
   ${color}
   ${space}
   ${layout}
@@ -39,12 +39,12 @@ const TodoButtons = styled.div`
   ${layout}
 `;
 
-const getTodoButtonStyle = ({bg='#3CCED8', color='#fff', isFirst}) => `
-  margin-right: ${isFirst ? '4px': 0};
-  color: ${color};
+const getTodoButtonStyle = ({ bg = '#3CCED8', buttonColor = '#fff', isFirst }) => `
+  margin-right: ${isFirst ? '4px' : 0};
+  color: ${buttonColor};
   background: ${bg};
   :hover {
-    background: ${color};
+    background: ${buttonColor};
     color: ${bg};
   }
 `;
@@ -66,27 +66,33 @@ const TodoList = () => {
   const dispatch = useDispatch();
 
   const handleDeleteTodo = (id) => {
-    dispatch(deleteTodo(id))
-  }
+    dispatch(deleteTodo(id));
+  };
 
   const handleToggleTodo = (id) => {
-    dispatch(toggleTodo(id))
-  }
-  
-  const filterTodoList = todoList.filter((todoItem, index) => index >= start && index <= end)
+    dispatch(toggleTodo(id));
+  };
+
+  const filterTodoList = todoList.filter((todoItem, index) => index >= start && index <= end);
 
   return (
-    <TodoListWrap width={1} color='#4d4d4d' pt={2}>
+    <TodoListWrap width={1} color="#4d4d4d" pt={2}>
       {
         filterTodoList.length > 0 && (
-          filterTodoList.map(todoItem => (
-            <TodoItemWrap width={[1, 1/2]} px={3} py={2} key={todoItem.id} isComplate={todoItem.isComplate}>
+          filterTodoList.map((todoItem) => (
+            <TodoItemWrap
+              width={[1, 1 / 2]}
+              px={3}
+              py={2}
+              key={todoItem.id}
+              isComplate={todoItem.isComplate}
+            >
               <TodoContent>{todoItem.content}</TodoContent>
               <TodoButtons>
                 <TodoButton isFirst onClick={() => handleToggleTodo(todoItem.id)}>
                   {todoItem.isComplate ? 'UnComplate' : 'Complate'}
                 </TodoButton>
-                <TodoButton bg='#F32E51' onClick={() => handleDeleteTodo(todoItem.id)}>Delete</TodoButton>
+                <TodoButton bg="#F32E51" onClick={() => handleDeleteTodo(todoItem.id)}>Delete</TodoButton>
               </TodoButtons>
             </TodoItemWrap>
           ))

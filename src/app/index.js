@@ -1,7 +1,7 @@
-import { GlobaStyled, ResetStyled } from './styles/globaStyle';
 import { Provider } from 'react-redux';
+import { GlobaStyled, ResetStyled } from './styles/globaStyle';
 
-import {store} from './store';
+import store from './store';
 import Pages from './Pages';
 
 function App() {
