@@ -4,7 +4,7 @@ import { space, layout, color } from 'styled-system';
 const WrapContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   ${color}
