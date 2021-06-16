@@ -20,7 +20,7 @@ const TodoItemWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #fff;
-  text-decoration: ${(props) => (props.isComplate ? 'line-through' : 'none')};
+  text-decoration: ${(props) => (props.isComplete ? 'line-through' : 'none')};
   ${color}
   ${space}
   ${layout}
@@ -84,12 +84,12 @@ const TodoList = () => {
               px={3}
               py={2}
               key={todoItem.id}
-              isComplate={todoItem.isComplate}
+              isComplete={todoItem.isComplete}
             >
               <TodoContent>{todoItem.content}</TodoContent>
               <TodoButtons>
                 <TodoButton isFirst onClick={() => handleToggleTodo(todoItem.id)}>
-                  {todoItem.isComplate ? 'UnComplate' : 'Complate'}
+                  {todoItem.isComplete ? 'UnComplate' : 'Complate'}
                 </TodoButton>
                 <TodoButton bg="#F32E51" onClick={() => handleDeleteTodo(todoItem.id)}>Delete</TodoButton>
               </TodoButtons>
