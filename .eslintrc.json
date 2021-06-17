@@ -25,6 +25,7 @@
         "no-param-reassign": [2, { "props": false }],
         "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
         "no-tabs": [2, { "allowIndentationTabs": true }],
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "react/jsx-props-no-spreading": "off"
     }
 }

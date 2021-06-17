@@ -67,6 +67,7 @@ const Pagination = ({ total, isBottom }) => {
       {
         pageList.map((pageItem) => (
           <PageButton
+            key={pageItem}
             onClick={
               pageItem !== currentPage ? (
                 () => handleChangePage(pageItem)

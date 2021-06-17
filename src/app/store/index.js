@@ -1,12 +1,30 @@
-import { configureStore } from '@reduxjs/toolkit';
-import homeSlice from '../Pages/Home/slice';
-import pageSlice from '../components/Pagination/slice';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
+import { createInjectorsEnhancer } from 'redux-injectors';
 
-const store = configureStore({
-  reducer: {
-    homeSlice,
-    page: pageSlice,
-  },
-});
+import createReducer from './reducer';
 
-export default store;
+export default function createRootStore(initialState= {}) {
+  const reduxSagaMiddlewareMonitorOptions = {};
+  const sagaMiddleware = createSagaMiddleware(reduxSagaMiddlewareMonitorOptions);
+  const { run: runSaga } = sagaMiddleware;
+
+  const middlewares = [sagaMiddleware];
+
+  const enhancers = [
+    createInjectorsEnhancer({
+      createReducer,
+      runSaga
+    })
+  ];
+
+  const store = configureStore({
+    reducer: createReducer(),
+    middleware: [...getDefaultMiddleware(), ...middlewares],
+    preloadedState: initialState,
+    devTools: process.env.NODE_ENV !== 'production',
+    enhancers
+  });
+
+  return store;
+};

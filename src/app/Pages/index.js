@@ -1,18 +1,22 @@
-import { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import ErrorBoundler from '../router/ErrorBroundler';
 
-const Home = lazy(() => import('./Home'));
+import ErrorBoundler from '../router/ErrorBroundler';
+import WrapContainer from '../styles/WrapContainer';
+import Header from '../components/Header';
+import Home from './Home/Loadable';
+import Todo from './Todo/Loadable';
 
 const Pages = () => (
   <BrowserRouter>
-    <Switch>
-      <ErrorBoundler>
-        <Suspense fallback={<div>...loading</div>}>
+    <WrapContainer bg="#e0e0e0">
+      <Header />
+      <Switch>
+        <ErrorBoundler>
           <Route exact path="/" component={Home} />
-        </Suspense>
-      </ErrorBoundler>
-    </Switch>
+          <Route exact path="/todo" component={Todo} /> 
+        </ErrorBoundler>
+      </Switch>
+    </WrapContainer>
   </BrowserRouter>
 );
 
