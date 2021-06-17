@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { color, space, layout } from 'styled-system';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { todoSelector, deleteTodo, toggleTodo } from '../../Pages/Home/slice';
+import { homePageManager } from '../../Pages/Todo/slice';
+import { todoListSelector } from '../../Pages/Todo/slice/selector';
 import { pageIndexSelector } from '../Pagination/slice';
 
 const TodoListWrap = styled.div`
@@ -59,7 +60,8 @@ const TodoButton = styled.button`
 `;
 
 const TodoList = () => {
-  const todoList = useSelector(todoSelector);
+  const todoList = useSelector(todoListSelector);
+  const { deleteTodo, toggleTodo } = homePageManager().actions;
   const { start, end } = useSelector(pageIndexSelector);
 
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import {
   layout, space, flexbox, color,
@@ -17,8 +17,9 @@ const HeaderWrap = styled.div(
 const HeaderButton = styled(Link)`
   color: #fff;
   border: none;
-  background: #95CAD8;
+  background: ${props => props.$isActive ? '#89DBFB' : '#95CAD8'};
   border-radius: 12px;
+  cursor: ${props => props.$isActive ? 'default' : 'pointer'};
   width: fit-content;
   display: inline-block;
   padding: 8px;
@@ -29,11 +30,14 @@ const HeaderButton = styled(Link)`
   }
 `;
 
-const Header = () => (
-  <HeaderWrap width="1" p={['2', '3']} bg="#fff">
-    <HeaderButton $isFirst to='/'>Home</HeaderButton>
-    <HeaderButton to='/'>Other</HeaderButton>
-  </HeaderWrap>
-);
+const Header = () => {
+  const location = useLocation();
+
+  return (
+    <HeaderWrap width="1" p={['2', '3']} bg="#fff">
+      <HeaderButton $isActive={location.pathname === '/'} $isFirst to='/'>Home</HeaderButton>
+      <HeaderButton $isActive={location.pathname === '/todo'} to='/todo'>todo</HeaderButton>
+    </HeaderWrap>
+)};
 
 export default Header;

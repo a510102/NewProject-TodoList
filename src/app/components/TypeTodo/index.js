@@ -5,7 +5,7 @@ import {
   space, layout, color, flexbox,
 } from 'styled-system';
 
-import { addTodo } from '../../Pages/Home/slice';
+import { homePageManager } from '../../Pages/Todo/slice';
 
 const TypeTodoWrap = styled.form`
   display: flex;
@@ -44,6 +44,7 @@ const TypeButton = styled.button`
 
 const TypeTodo = () => {
   const [newTodo, setNewTodo] = useState('');
+  const { addTodo } = homePageManager().actions;
   const dispatch = useDispatch();
   const getNewTodo = ({ target }) => {
     const { value } = target;
