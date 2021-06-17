@@ -1,3 +1,3 @@
-import loadable from '../../router/Loadable';
+import loadable from '../../uitls/Loadable';
 
 export default loadable(() => import('./index'));
