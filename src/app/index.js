@@ -2,10 +2,12 @@ import { Provider } from 'react-redux';
 import { Helmet } from 'react-helmet-async';
 
 import { GlobaStyled, ResetStyled } from './styles/globaStyle';
-import store from './store';
+import createRootStore from './store';
 import Pages from './Pages';
 
 function App() {
+  const store = createRootStore()
+
   return (
     <div className="App">
       <Helmet>
