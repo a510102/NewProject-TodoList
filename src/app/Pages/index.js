@@ -5,6 +5,7 @@ import WrapContainer from '../styles/WrapContainer';
 import Header from '../components/Header';
 import Home from './Home/Loadable';
 import Todo from './Todo/Loadable';
+import COVID from './COVID/Loadable';
 
 const Pages = () => (
   <BrowserRouter>
@@ -13,7 +14,8 @@ const Pages = () => (
       <Switch>
         <ErrorBoundler>
           <Route exact path="/" component={Home} />
-          <Route exact path="/todo" component={Todo} /> 
+          <Route exact path="/todo" component={Todo} />
+          <Route exact path='/covid' component={COVID} />
         </ErrorBoundler>
       </Switch>
     </WrapContainer>

@@ -16,7 +16,7 @@ const checkStatus = (response) => {
   throw error;
 };
 
-const resquest = async (url, options) => {
+const resquest = async (url, options = { method: "GET" }) => {
   const fetchResponse = await fetch(url, options);
   const response = await checkStatus(fetchResponse);
   return parseJSON(response);

@@ -8,7 +8,8 @@ const Header = () => {
   return (
     <HeaderWrap width="1" p={['2', '3']} bg="#fff">
       <HeaderButton $isActive={location.pathname === '/'} $isFirst to='/'>Home</HeaderButton>
-      <HeaderButton $isActive={location.pathname === '/todo'} to='/todo'>todo</HeaderButton>
+      <HeaderButton $isActive={location.pathname === '/todo'} to='/todo'>Todo</HeaderButton>
+      <HeaderButton $isActive={location.pathname === '/covid'} to='/covid'>COVID</HeaderButton>
     </HeaderWrap>
 )};
 
