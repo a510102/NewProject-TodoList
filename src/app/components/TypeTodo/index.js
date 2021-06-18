@@ -1,46 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
-import {
-  space, layout, color, flexbox,
-} from 'styled-system';
 
+import { TypeButton, TypeInput, TypeTodoWrap } from './styles';
 import { homePageManager } from '../../Pages/Todo/slice';
-
-const TypeTodoWrap = styled.form`
-  display: flex;
-  justify-content: center;
-  ${space};
-  ${layout};
-  ${color};
-  ${flexbox};
-`;
-
-const TypeInput = styled.input`
-  outline: none;
-  border: none;
-  border-radius: 4px;
-  ${space};
-  ${layout};
-  ${color};
-  ${flexbox};
-`;
-
-const TypeButton = styled.button`
-  border-radius: 4px;
-  background: #3CCED8;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  :hover {
-    background: #fff;
-    color: #3CCED8;
-  }
-  ${space};
-  ${layout};
-  ${color};
-  ${flexbox};
-`;
 
 const TypeTodo = () => {
   const [newTodo, setNewTodo] = useState('');
