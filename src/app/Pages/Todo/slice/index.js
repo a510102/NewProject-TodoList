@@ -35,7 +35,7 @@ export const { deleteTodo, toggleTodo, addTodo } = homePageSlice.actions;
 
 export const homePageManager = () => {
   useInjectReducer({
-    key: 'homePage',
+    key: homePageSlice.name,
     reducer: homePageSlice.reducer
   })
 
